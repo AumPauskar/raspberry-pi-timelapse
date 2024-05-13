@@ -24,7 +24,7 @@ def timelapse(delay, duration):
         time.sleep(delay)
 
 def main():
-    timelapse(5, 60)
+    timelapse(delay, duration)
 
 if __name__ == "__main__":
     main()
