@@ -1,7 +1,7 @@
 import time
 import os
 import json
-
+from humidity import check_humidity, initialize_csv
 # Load the configuration file
 with open("config.json", "r") as config_file:
     config = json.load(config_file)
@@ -32,9 +32,10 @@ pic_name = 1
 
 def take_photo():
     global pic_name
-    os.system(f"libcamera-still --nopreview -o timelapse2/timelapse{pic_name}.jpg --vflip")
+    os.system(f"libcamera-still --nopreview -o timelapse/timelapse{pic_name}.jpg --vflip")
     pic_name += 1
     print(pic_name,"picture taken suncessfully")
+    print("Current ambience: ", check_humidity())
 
 def timelapse(delay, duration):
     start_time = time.time()
@@ -46,6 +47,7 @@ def timelapse(delay, duration):
         print(start_time - end_time, "time remaining")
 
 def main():
+    initialize_csv()
     timelapse(delay, duration)
 
 if __name__ == "__main__":

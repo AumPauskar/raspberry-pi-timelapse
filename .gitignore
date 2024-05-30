@@ -1,2 +1,4 @@
 test*
 timelapse*.jpg
+__pycache__/
+data.csv
